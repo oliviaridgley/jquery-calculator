@@ -6,10 +6,15 @@ $(document).ready(function() {
 
 //================= On Screen Function ===============//
 
+var screenArea = $("#screen");
+
 function onScreen(event){
-  var screenArea = $("#screen");
   var input = $(event.target).text();
+  if($(this).text() === 'C' || $(this).text() === '=') {
+    console.log('C');
+  } else {
   screenArea.text(screenArea.text() + input);
+  }
 }
 
 //================== Number Selection & Click ============//
@@ -54,6 +59,7 @@ $(".operator").on("click", onScreen);
 
 $(".l-row").on("click", onScreen);
 
+
 //If the screen displays the message `Error`, don't append anything.//
 
 
@@ -61,13 +67,43 @@ $(".l-row").on("click", onScreen);
 
 //Click the `clear` button to remove all the text from the screen.//
 
+//====================== Clear ==========================//
 
+var clear = $("#clear");
+
+clear.on("click", function(){
+  screenArea.empty();
+});
 
 
 //Click the `equals` button to evaluate the arithmetic expression shown in the screen.//
 
 
+var equals = $('#equals');
 
+equals.on('click', function () {
+  var hasPlus = screenArea.text().indexOf('+') !== -1;
+  var hasMinus = screenArea.text().indexOf('-') !== -1;
+  var hasMultiplication = screenArea.text().indexOf('x') !== -1;
+  var hasDivision = screenArea.text().indexOf('÷') !== -1;
+
+  if (hasPlus) {
+
+  }
+
+  if (hasMinus) {
+
+  }
+
+  if (hasMultiplication) {
+
+  }
+
+  if (hasDivision) {
+
+  }
+
+})
 
 //If the expression is in format `operand(+|-|x|÷)operand`, evaluate the expression and update the screen with the result.//
 

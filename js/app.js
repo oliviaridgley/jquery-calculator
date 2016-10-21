@@ -63,10 +63,6 @@ $(".operator").on("click", onScreen);
 
 $(".l-row").on("click", onScreen);
 
-
-//If the screen displays the message `Error`, don't append anything.//
-
-
 //====================== Clear ==========================//
 
 
@@ -90,6 +86,12 @@ equals.on('click', function () {
   if (hasPlus === true){
     var plus = screenArea.text().indexOf('+');
     console.log(plus);
+    var split = screenArea.text().split('+');
+    console.log(split);
+    var left = parseFloat(split[0])
+    console.log(left);
+    var right = parseFloat(split[1])
+    console.log(right)
 
 
   }
@@ -115,11 +117,8 @@ equals.on('click', function () {
 });
 
 
-
-
-
-
 //If the expression isn't in the correct format or when attempting to divide by zero, update the screen with the message `Error`.//
+//If the screen displays the message `Error`, don't append anything.//
 
 
 

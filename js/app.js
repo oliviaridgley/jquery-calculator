@@ -1,12 +1,16 @@
 "use strict";
 $(document).ready(function() {
 
-//Click an operand or operator button to append its corresponding text to the screen.//
+// ================ Variables =====================//
+
+var screenArea = $("#screen");
+var clear = $("#clear");
+var equals = $('#equals');
+
 
 
 //================= On Screen Function ===============//
 
-var screenArea = $("#screen");
 
 function onScreen(event){
   var input = $(event.target).text();
@@ -63,49 +67,53 @@ $(".l-row").on("click", onScreen);
 //If the screen displays the message `Error`, don't append anything.//
 
 
-
-
-//Click the `clear` button to remove all the text from the screen.//
-
 //====================== Clear ==========================//
 
-var clear = $("#clear");
 
 clear.on("click", function(){
   screenArea.empty();
 });
 
 
-//Click the `equals` button to evaluate the arithmetic expression shown in the screen.//
+//Click the `equals` button to evaluate the arithmetic expression shown in the screen. If the expression is in format `operand(+|-|x|÷)operand`, evaluate the expression and update the screen with the result.//
 
-
-var equals = $('#equals');
+//======================= Evaluating on Equals Click ================//
 
 equals.on('click', function () {
+
   var hasPlus = screenArea.text().indexOf('+') !== -1;
   var hasMinus = screenArea.text().indexOf('-') !== -1;
   var hasMultiplication = screenArea.text().indexOf('x') !== -1;
   var hasDivision = screenArea.text().indexOf('÷') !== -1;
 
-  if (hasPlus) {
+
+  if (hasPlus === true){
+    var plus = screenArea.text().indexOf('+');
+    console.log(plus);
+
 
   }
 
-  if (hasMinus) {
+  else if (hasMinus === true){
+    var minus = screenArea.text().indexOf('-');
+    console.log(minus);
 
   }
 
-  if (hasMultiplication) {
+  else if (hasMultiplication === true){
+    var multiply = screenArea.text().indexOf('x');
+    console.log(multiply);
 
   }
 
-  if (hasDivision) {
+  else if (hasDivision === true){
+    var divide = screenArea.text().indexOf('÷');
+    console.log(divide);
 
   }
 
-})
+});
 
-//If the expression is in format `operand(+|-|x|÷)operand`, evaluate the expression and update the screen with the result.//
 
 
 

@@ -14,7 +14,7 @@ var equals = $('#equals');
 
 function onScreen(event){
   var input = $(event.target).text();
-  if($(this).text() === 'C' || $(this).text() === '=') {
+  if($(this).text() === 'C' || $(this).text() === '='){
     console.log('C');
   } else {
   screenArea.text(screenArea.text() + input);
@@ -75,6 +75,8 @@ clear.on("click", function(){
 
 //======================= Evaluating on Equals Click ================//
 
+
+
 equals.on('click', function () {
 
   var hasPlus = screenArea.text().indexOf('+') !== -1;
@@ -83,42 +85,68 @@ equals.on('click', function () {
   var hasDivision = screenArea.text().indexOf('÷') !== -1;
 
 
-  if (hasPlus === true){
-    var plus = screenArea.text().indexOf('+');
-    console.log(plus);
-    var split = screenArea.text().split('+');
-    console.log(split);
-    var left = parseFloat(split[0])
-    console.log(left);
-    var right = parseFloat(split[1])
-    console.log(right)
-
-
+if (hasPlus === true){
+    var splitA = screenArea.text().split('+');
+    //console.log(splitA);
+    //var tempString = "";
+    //var myExpr = /[\+\-x÷]/g;
+    //tempString = splitA[0].replace(myExpr, '');
+    //console.log(tempString);
+    var leftA = parseFloat(splitA[0]);
+    //console.log(left);
+    var rightA = parseFloat(splitA[1]);
+    //console.log(right);
+    var answerA = leftA + rightA;
+// =======================Error Testing answerA ==============//
+      if(isNaN(answerA)){
+        screenArea.text("Error");
+      } else {
+    screenArea.text(answerA);
   }
-
+}
   else if (hasMinus === true){
-    var minus = screenArea.text().indexOf('-');
-    console.log(minus);
-
+    var splitMin = screenArea.text().split('-');
+    var leftMin = parseFloat(splitMin[0]);
+    var rightMin = parseFloat(splitMin[1]);
+    var answerMin = leftMin - rightMin;
+// =======================Error Testing answerMin ==============//
+    if(isNaN(answerMin)){
+      screenArea.text("Error");
+    } else {
+    screenArea.text(answerMin);
   }
-
+}
   else if (hasMultiplication === true){
-    var multiply = screenArea.text().indexOf('x');
-    console.log(multiply);
-
+    var splitMul = screenArea.text().split('x');
+    var leftMul = parseFloat(splitMul[0]);
+    var rightMul = parseFloat(splitMul[1]);
+    var answerMul = leftMul*rightMul;
+    // =======================Error Testing answerMul ==============//
+    if(isNaN(answerMul)){
+      screenArea.text("Error");
+    } else {
+    screenArea.text(answerMul);
   }
-
+}
   else if (hasDivision === true){
-    var divide = screenArea.text().indexOf('÷');
-    console.log(divide);
+    var splitD = screenArea.text().split('÷');
+    var leftD = parseFloat(splitD[0]);
+    var rightD = parseFloat(splitD[1]);
+    // =======================Error Testing answerD ==============//
+    if (rightD === 0){
+      screenArea.text("Error");
+    } else {
+    var answerD = leftD/rightD;
+      if(isNaN(answerD)){
+        screenArea.text("Error");
+      } else {
+        screenArea.text(answerD);
+    }
 
   }
-
+}
 });
 
-
-//If the expression isn't in the correct format or when attempting to divide by zero, update the screen with the message `Error`.//
-//If the screen displays the message `Error`, don't append anything.//
 
 
 
